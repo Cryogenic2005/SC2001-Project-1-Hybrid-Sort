@@ -19,7 +19,7 @@ To compile the project, change the working directory to this project's. Then sim
 Windows:
 
 ```
-    g++ -g -std=c++17 main.cpp src\\*.cpp -I headers -o bin\\main.exe
+    g++ -g -std=c++17 main.cpp src\*.cpp -I headers -o bin\main.exe
 ```
 
 Linux:
@@ -35,13 +35,13 @@ Execute the program by calling it through the command line. The program accepts 
 Windows:
 
 ```
-    .\\bin\\main.exe \[SIZE_OF_ARRAY\] \[SORT_THRESHOLD\] \[GENERATE_NEW_ARRAY\]
+    .\bin\main.exe [SIZE_OF_ARRAY] [SORT_THRESHOLD] [GENERATE_NEW_ARRAY]
 ```
 
 Linux:
 
 ```
-    ./bin/main.exe \[SIZE_OF_ARRAY\] \[SORT_THRESHOLD\] \[GENERATE_NEW_ARRAY\]
+    ./bin/main.exe [SIZE_OF_ARRAY] [SORT_THRESHOLD] [GENERATE_NEW_ARRAY]
 ```
 
 Arguments:
