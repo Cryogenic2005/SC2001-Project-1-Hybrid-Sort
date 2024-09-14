@@ -14,15 +14,35 @@ The program will generate a .txt file containing randomly-generated data for the
 
 ## Compilation
 
-To compile the project, change the working directory to this project's. Then simply run the following command on the command line (Windows):
+To compile the project, change the working directory to this project's. Then simply run the following command on the command line:
 
-> g++ -g -std=c++17 main.cpp src\\*.cpp -I headers -o bin\\main.exe
+Windows:
+
+```
+    g++ -g -std=c++17 main.cpp src\\*.cpp -I headers -o bin\\main.exe
+```
+
+Linux:
+
+```
+    g++ -g -std=c++17 main.cpp src/*.cpp -I headers -o bin/main
+```
 
 ## Running the program
 
 Execute the program by calling it through the command line. The program accepts up to three arguments:
 
-> .\\bin\\main.exe \[SIZE_OF_ARRAY\] \[SORT_THRESHOLD\] \[GENERATE_NEW_ARRAY\]
+Windows:
+
+```
+    .\\bin\\main.exe \[SIZE_OF_ARRAY\] \[SORT_THRESHOLD\] \[GENERATE_NEW_ARRAY\]
+```
+
+Linux:
+
+```
+    ./bin/main.exe \[SIZE_OF_ARRAY\] \[SORT_THRESHOLD\] \[GENERATE_NEW_ARRAY\]
+```
 
 Arguments:
 - SIZE_OF_ARRAY: The size of the array to sort. This number of elements will be read from the 'Data.txt' file. Default value is 10 000 000
