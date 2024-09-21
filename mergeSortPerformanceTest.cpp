@@ -75,6 +75,7 @@ int main(int argc, char **argv){
     long double elapsed_time = 1000.0l * (end - start) / CLOCKS_PER_SEC;
 
     std::cout << "Total number of key comparisons: " << total_key_comps << std::endl;
+    std::cout << "CPU time used: " << elapsed_time << "ms\n";
 
     return 0;
 }
