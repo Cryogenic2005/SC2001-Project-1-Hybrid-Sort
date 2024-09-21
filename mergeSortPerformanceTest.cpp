@@ -7,6 +7,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <ctime>
 
 // Reads in data from the input file, returns -1 on failure, 0 on success
 int readData(std::vector<int> &data, int size, std::string filepath)
@@ -67,7 +68,11 @@ int main(int argc, char **argv){
     std::cout << "Performing merge sort on array.\n";
     int total_key_comps = 0;
     
+    std::clock_t start = std::clock();
     mergeSort(data, 0, size, total_key_comps);
+    std::clock_t end = std::clock();
+
+    long double elapsed_time = 1000.0l * (end - start) / CLOCKS_PER_SEC;
 
     std::cout << "Total number of key comparisons: " << total_key_comps << std::endl;
 
