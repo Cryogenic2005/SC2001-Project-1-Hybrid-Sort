@@ -38,7 +38,7 @@ Windows:
     .\bin\main.exe [SIZE_OF_ARRAY] [SORT_THRESHOLD] [GENERATE_NEW_ARRAY]
 ```
 
-Linux:
+Linux & MacOS:
 
 ```
     ./bin/main.exe [SIZE_OF_ARRAY] [SORT_THRESHOLD] [GENERATE_NEW_ARRAY]
