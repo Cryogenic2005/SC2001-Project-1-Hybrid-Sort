@@ -19,13 +19,21 @@ To compile the project, change the working directory to this project's. Then sim
 Windows:
 
 ```
-    g++ -g -std=c++17 main.cpp src\*.cpp -I headers -o bin\main.exe
+    g++ -g -std=c++17 hybridSortPerformanceTest.cpp src\*.cpp -I headers -o bin\hybridSort.exe
+```
+
+```
+    g++ -g -std=c++17 mergeSortPerformanceTest.cpp src\*.cpp -I headers -o bin\mergeSort.exe
 ```
 
 Linux:
 
 ```
-    g++ -g -std=c++17 main.cpp src/*.cpp -I headers -o bin/main
+    g++ -g -std=c++17 hybridSortPerformanceTest.cpp src/*.cpp -I headers -o bin/hybridSort
+```
+
+```
+    g++ -g -std=c++17 mergeSortPerformanceTest.cpp src/*.cpp -I headers -o bin/mergeSort
 ```
 
 ## Running the program
@@ -34,17 +42,30 @@ Execute the program by calling it through the command line. The program accepts 
 
 Windows:
 
+- Hybrid sort:
 ```
-    .\bin\main.exe [SIZE_OF_ARRAY] [SORT_THRESHOLD] [GENERATE_NEW_ARRAY]
+    .\bin\hybridSort.exe [SIZE_OF_ARRAY] [SORT_THRESHOLD] [GENERATE_NEW_ARRAY] [UPPER_BOUND]
+```
+
+- Merge sort
+```
+    .\bin\mergeSort.exe [SIZE_OF_ARRAY] [GENERATE_NEW_ARRAY] [UPPER_BOUND]
 ```
 
 Linux & MacOS:
 
+- Hybrid sort:
 ```
-    ./bin/main.exe [SIZE_OF_ARRAY] [SORT_THRESHOLD] [GENERATE_NEW_ARRAY]
+    ./bin/hybridSort [SIZE_OF_ARRAY] [SORT_THRESHOLD] [GENERATE_NEW_ARRAY] [UPPER_BOUND]
+```
+
+- Merge sort
+```
+    ./bin/mergeSort [SIZE_OF_ARRAY] [GENERATE_NEW_ARRAY] [UPPER_BOUND]
 ```
 
 Arguments:
 - SIZE_OF_ARRAY: The size of the array to sort. This number of elements will be read from the 'Data.txt' file. Default value is 10 000 000
 - SORT_THRESHOLD: The size threshold to use for switching between insertion sort and merge sort. Specifically, if SIZE <= SORT_THRESHOLD then the algorithm will use the former, otherwise it will use the latter. Default value is 4.
 - GENERATE_NEW_ARRAY: A bool value on whether to generate a new array (changing the data in the file), or keep using the existing data in the file. Default value is 1 (True). Input 0 for False
+- UPPER_BOUND: The upper bound of the array's values generated. Default value is 1 000 000 000
