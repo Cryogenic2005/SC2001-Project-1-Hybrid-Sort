@@ -1,5 +1,5 @@
 #include <configs.h>
-#include <hybridSort.h>
+#include <sortingAlgorithms.h>
 #include <generateRandomArray.h>
 
 #include <iostream>
@@ -11,10 +11,11 @@
 // Reads in data from the input file, returns -1 on failure, 0 on success
 int readData(std::vector<int> &data, int size, std::string filepath)
 {
+    std::cout << "Reading in data... ";
     std::ifstream file(filepath);
 
     if(!file){
-        std::cerr << "Couldn't open file " << filepath << std::endl;
+        std::cerr << "Error!\n";
         return -1;
     }
 
@@ -23,6 +24,7 @@ int readData(std::vector<int> &data, int size, std::string filepath)
         file >> data[i];
     }
     
+    std::cout << "Done!\n";
     return 0;
 }
 
@@ -51,6 +53,7 @@ int main(int argc, char **argv){
     bool generate_new_array = (bool) (argc > 3 ? atoi(argv[3]) : GENERATE_NEW_ARRAY);
     int upper_bound = argc > 4 ? atoi(argv[4]) : UPPER_BOUND;
 
+    // Generate array of random values and outputs to a text file
     if(generate_new_array){
         std::cout << "Generating new array of " << size << "... ";
         generateRandomArray(size, LOWER_BOUND, upper_bound, DESTINATION_FILE);
@@ -59,22 +62,14 @@ int main(int argc, char **argv){
 
     // Read in data from input file
     std::vector<int> data = std::vector<int>(size);
-    std::cout << "Reading in data... ";
     if(readData(data, size, DESTINATION_FILE) == -1) return 0;
-    std::cout << "Done!\n";
-
-    // Make copy of array and sort it through C++ sort function to double check if sorting is correct.
-    std::vector<int> check = std::vector<int>(data);
-    std::sort(check.begin(), check.end());
 
     // Performs hybrid sort
     std::cout << "Performing hybrid sort on array. Current size threshold is " 
         << threshold << std::endl;
     int total_key_comps = 0;
+    
     hybridSort(data, 0, size, threshold, total_key_comps);
-
-    // Double check sorting is correct using c++ native sorting command
-    verifyCorrectSort(size, data, check);
 
     std::cout << "Total number of key comparisons: " << total_key_comps << std::endl;
 
