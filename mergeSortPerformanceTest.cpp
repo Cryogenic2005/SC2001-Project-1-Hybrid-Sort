@@ -29,24 +29,6 @@ int readData(std::vector<int> &data, int size, std::string filepath)
     return 0;
 }
 
-void verifyCorrectSort(int size, std::vector<int> &data, std::vector<int> &check)
-{
-    std::cout << "Double checking validity of sorted array... ";
-    bool flag = true;
-    for (int i = 0; i < size; i++)
-    {
-        if (data[i] != check[i])
-        {
-            std::cout << "Invalid sorting (i = " << i << ")\n";
-            flag = false;
-            break;
-        }
-    }
-
-    if (flag)
-        std::cout << "Valid sorting\n";
-}
-
 int main(int argc, char **argv){
     // Parses the command line arguments
     int size = argc > 1 ? atoi(argv[1]) : SIZE;

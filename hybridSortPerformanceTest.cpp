@@ -29,24 +29,6 @@ int readData(std::vector<int> &data, int size, std::string filepath)
     return 0;
 }
 
-void verifyCorrectSort(int size, std::vector<int> &data, std::vector<int> &check)
-{
-    std::cout << "Double checking validity of sorted array... ";
-    bool flag = true;
-    for (int i = 0; i < size; i++)
-    {
-        if (data[i] != check[i])
-        {
-            std::cout << "Invalid sorting (i = " << i << ")\n";
-            flag = false;
-            break;
-        }
-    }
-
-    if (flag)
-        std::cout << "Valid sorting\n";
-}
-
 int main(int argc, char **argv){
     // Parses the command line arguments
     int size = argc > 1 ? atoi(argv[1]) : SIZE;
@@ -74,7 +56,7 @@ int main(int argc, char **argv){
     hybridSort(data, 0, size, threshold, total_key_comps);
     std::clock_t end = std::clock();
 
-    long double elapsed_time = 1000.0 * (end - start) / CLOCKS_PER_SEC;
+    long double elapsed_time = 1000.0l * (end - start) / CLOCKS_PER_SEC;
 
     std::cout << "Total number of key comparisons: " << total_key_comps << std::endl;
     std::cout << "CPU time used: " << elapsed_time << "ms\n";
