@@ -3,8 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <ctime>
-#include <cstdlib>
+#include <random>
 
 void generateRandomArray(int size, int lower_bound, int upper_bound, std::string filepath){
     std::ofstream file(filepath);
@@ -14,10 +13,11 @@ void generateRandomArray(int size, int lower_bound, int upper_bound, std::string
         return;
     }
 
-    const int SAMPLE_SIZE_LENGTH = upper_bound - lower_bound + 1;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dist(lower_bound, upper_bound);
 
-    std::srand(std::time(nullptr));
     for (int i = 0; i < size; i++){
-        file << std::rand() % SAMPLE_SIZE_LENGTH + lower_bound << " ";
+        file << dist(gen) << " ";
     }
 }
