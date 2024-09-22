@@ -1,4 +1,5 @@
 #include <configs.h>
+#include <utils.h>
 #include <sortingAlgorithms.h>
 #include <generateRandomArray.h>
 
@@ -8,26 +9,6 @@
 #include <algorithm>
 #include <vector>
 #include <ctime>
-
-// Reads in data from the input file, returns -1 on failure, 0 on success
-int readData(std::vector<int> &data, int size, std::string filepath)
-{
-    std::cout << "Reading in data... ";
-    std::ifstream file(filepath);
-
-    if(!file){
-        std::cerr << "Error!\n";
-        return -1;
-    }
-
-    for (int i = 0; i < size; i++)
-    {
-        file >> data[i];
-    }
-    
-    std::cout << "Done!\n";
-    return 0;
-}
 
 int main(int argc, char **argv){
     // Parses the command line arguments
@@ -45,7 +26,7 @@ int main(int argc, char **argv){
 
     // Read in data from input file
     std::vector<int> data = std::vector<int>(size);
-    if(readData(data, size, DESTINATION_FILE) == -1) return 0;
+    readData(data, size, DESTINATION_FILE);
 
     // Performs hybrid sort
     std::cout << "Performing hybrid sort on array. Current size threshold is " 
