@@ -2,12 +2,12 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <filesystem>
 #include <random>
 
-void generateRandomArray(int size, int lower_bound, int upper_bound, std::string filepath){
-    std::ofstream file(filepath + ".txt");
-    std::ofstream binfile(filepath + ".dat", std::ios::binary);
+void generateRandomArray(int size, int lower_bound, int upper_bound, std::filesystem::path filepath){
+    std::ofstream file(filepath.replace_extension(".txt"));
+    std::ofstream binfile(filepath.replace_extension(".dat"), std::ios::binary);
 
     if(!file || !binfile){
         throw new std::runtime_error("Couldn't open file for writing.");

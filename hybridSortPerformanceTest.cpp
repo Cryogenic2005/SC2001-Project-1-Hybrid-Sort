@@ -5,10 +5,10 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <algorithm>
 #include <vector>
 #include <ctime>
+#include <filesystem>
 
 int main(int argc, char **argv){
     // Parses the command line arguments
@@ -17,16 +17,25 @@ int main(int argc, char **argv){
     bool generate_new_array = (bool) (argc > 3 ? atoi(argv[3]) : GENERATE_NEW_ARRAY);
     int upper_bound = argc > 4 ? atoi(argv[4]) : UPPER_BOUND;
 
+    if(!std::filesystem::exists(DESTINATION_FOLDER)){
+        if(!std::filesystem::create_directory(DESTINATION_FOLDER)){
+            throw std::runtime_error("Couldn't create directory");
+        }
+    }
+
+    std::filesystem::path filepath = (DESTINATION_FOLDER / DESTINATION_FILENAME)
+        .concat(std::to_string(size));
+
     // Generate array of random values and outputs to a text file
     if(generate_new_array){
         std::cout << "Generating new array of " << size << "... ";
-        generateRandomArray(size, LOWER_BOUND, upper_bound, DESTINATION_FILE);
+        generateRandomArray(size, LOWER_BOUND, upper_bound, filepath);
         std::cout << "Done!\n";
     }
 
     // Read in data from input file
     std::vector<int> data = std::vector<int>(size);
-    readData(data, size, DESTINATION_FILE);
+    readData(data, size, filepath);
 
     // Performs hybrid sort
     std::cout << "Performing hybrid sort on array. Current size threshold is " 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <filesystem>
 
 /* Configs for random array generation */ 
 
@@ -10,7 +11,8 @@ const int SIZE = 1e7;
 const int LOWER_BOUND = 1; 
 // Maximum value that can appear in the array
 const int UPPER_BOUND = 1e9; 
-const std::string DESTINATION_FILE = "data";
+const std::filesystem::path DESTINATION_FOLDER = "data";
+const std::filesystem::path DESTINATION_FILENAME = "data";
 
 /* Configs for hybrid sort algorithm */
 
