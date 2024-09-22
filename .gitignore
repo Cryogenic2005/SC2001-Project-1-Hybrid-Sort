@@ -3,4 +3,5 @@
 /bin/*
 !/bin/.keep
 
-/Data.txt
+/data/*
+!/data/.keep
