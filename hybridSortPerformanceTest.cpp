@@ -7,7 +7,7 @@
 #include <fstream>
 #include <algorithm>
 #include <vector>
-#include <ctime>
+#include <chrono>
 #include <filesystem>
 
 int main(int argc, char **argv){
@@ -42,11 +42,12 @@ int main(int argc, char **argv){
         << threshold << std::endl;
     int total_key_comps = 0;
     
-    std::clock_t start = std::clock();
+    auto start = std::chrono::steady_clock::now();
     hybridSort(data, 0, size, threshold, total_key_comps);
-    std::clock_t end = std::clock();
+    auto end = std::chrono::steady_clock::now();
 
-    long double elapsed_time = 1000.0l * (end - start) / CLOCKS_PER_SEC;
+    long double elapsed_time = 
+        std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1000.0l;
 
     std::cout << "Total number of key comparisons: " << total_key_comps << std::endl;
     std::cout << "CPU time used: " << elapsed_time << "ms\n";
